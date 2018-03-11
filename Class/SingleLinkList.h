@@ -10,5 +10,6 @@
 #define SingleLinkList_h
 
 #include <stdio.h>
+#include "Config.h"
 
 #endif /* SingleLinkList_h */

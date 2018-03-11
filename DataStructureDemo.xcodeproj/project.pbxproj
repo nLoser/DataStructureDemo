@@ -31,6 +31,7 @@
 		A926CD2A205524B600CA94E1 /* SingleLinkList.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = SingleLinkList.c; sourceTree = "<group>"; };
 		A926CD2C205524FC00CA94E1 /* SequentialLink.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SequentialLink.h; sourceTree = "<group>"; };
 		A926CD2D205524FC00CA94E1 /* SequentialLink.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = SequentialLink.c; sourceTree = "<group>"; };
+		A926CD2F205526A800CA94E1 /* Config.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Config.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,10 +73,11 @@
 		A926CD282055248500CA94E1 /* Class */ = {
 			isa = PBXGroup;
 			children = (
-				A926CD29205524B600CA94E1 /* SingleLinkList.h */,
-				A926CD2A205524B600CA94E1 /* SingleLinkList.c */,
+				A926CD2F205526A800CA94E1 /* Config.h */,
 				A926CD2C205524FC00CA94E1 /* SequentialLink.h */,
 				A926CD2D205524FC00CA94E1 /* SequentialLink.c */,
+				A926CD29205524B600CA94E1 /* SingleLinkList.h */,
+				A926CD2A205524B600CA94E1 /* SingleLinkList.c */,
 			);
 			path = Class;
 			sourceTree = "<group>";
