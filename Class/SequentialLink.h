@@ -12,10 +12,6 @@
 #include <stdio.h>
 #include "Config.h"
 
-typedef int ElemType;
-
-#define MAXSIZE 100
-
 typedef struct {
     ElemType * elem; ///< 存储空间
     int length; ///< 当前长度

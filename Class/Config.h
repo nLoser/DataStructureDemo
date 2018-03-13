@@ -12,9 +12,11 @@
 #include <stdlib.h>
 
 typedef int Status;
+typedef int ElemType;
 
 #define OK        1
 #define ERROR     0
 #define OVERFLOW -2
+#define MAXSIZE 100
 
 #endif /* Config_h */

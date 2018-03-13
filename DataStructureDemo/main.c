@@ -12,5 +12,19 @@
 
 int main(int argc, const char * argv[]) {
     //testSequentialLinkOperation();
+    
+    LinkNode * link = (LinkNode *)malloc(sizeof(LinkNode));;
+    link_init(link);
+    
+    printf("%d - %p\n",link->data,&(link->next));
+    
+    
+    int * b;
+    b = (int *)100;
+    printf("b : %d\n",&b);
+    
+    int * a = NULL;
+    printf("a 地址: %p\n",&a);
+    
     return 0;
 }
