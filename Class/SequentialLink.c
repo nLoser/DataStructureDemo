@@ -38,7 +38,7 @@ int sqlist_getIndex(SqList *L, ElemType value) {
             return i+1;
         }
     }
-    return ERROR;
+    return OVERFLOW;
 }
 
 ElemType sqlist_getValue(SqList *L, int index) {
@@ -76,7 +76,7 @@ void testSequentialLinkOperation(void){
     sqlist_init(L, 1000);
     
     char * sourceString = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-    srand(time(NULL));
+    srand((unsigned int)time(NULL));
     
     for (int i = 0; i < 10; i++) {
         char * buffer = malloc(sizeof(char) * 10);
@@ -87,8 +87,9 @@ void testSequentialLinkOperation(void){
         sqlist_addValue(L, buffer);
         printf("--%s\n",buffer);
     }
-    printf("当前长度%d\n",L->length);
+    printf("当前长度:%d\n",L->length);
     sqlist_insert(L, 1, "这是我插入的一个数");
-    printf("现在长度%d\n",L->length);
-    printf("%s\n",sqlist_getValue(L, 1));
+    printf("现在长度:%d\n",L->length);
+    printf("获取第一个value:%s\n",sqlist_getValue(L, 1));
+    printf("查8VZHm2XLDu值的index为:%d\n",sqlist_getIndex(L, "8VZHm2XLDu"));
 }
