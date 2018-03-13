@@ -11,10 +11,7 @@
 #include "SingleLinkList.h"
 
 int main(int argc, const char * argv[]) {
-    testSequentialLinkOperation();
-    
-//    LinkNode * link = (LinkNode *)malloc(sizeof(LinkNode));;
-//    link_init(link);
-    
+    //testSequentialLinkOperation();
+    testSingleLinkListOperation();
     return 0;
 }
