@@ -12,7 +12,7 @@
 #include <stdlib.h>
 
 typedef int Status;
-typedef int ElemType;
+typedef char * ElemType;
 
 #define OK        1
 #define ERROR     0
