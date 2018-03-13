@@ -14,6 +14,7 @@ Status link_init(LinkNode * L) {
     if (!L) return OVERFLOW;
     L->data = "我是链头";
     L->next = NULL;
+    L->length = 0;
     return OK;
 }
 
@@ -24,16 +25,57 @@ Status link_addValue(SingleLink L,ElemType value) {
     if (!node) return ERROR;
     node->data = value;
     node->next = NULL;
-    L->next = node;
-    printf("####添加数据Single Link成功####\n");
+    
+    LinkNode * currentNode = L;
+    while (currentNode->next != NULL) {
+        currentNode = currentNode->next;
+    }
+    currentNode->next = node;
+    
+    ++L->length;
+    printf("####添加数据(%s)成功%d####\n",node->data,L->length);
     return OK;
 }
 
 //插
-
-//删
+Status link_insert(SingleLink L, int index, ElemType value) {
+    LinkNode * node = (LinkNode *)malloc(sizeof(LinkNode));
+    if (!node) return ERROR;
+    node->data = value;
+    
+    int i = 1;
+    LinkNode * currentNode = L;
+    while (currentNode->next != NULL) {
+        if (i == index) {
+            LinkNode * tempNode = currentNode->next;
+            currentNode->next = node;
+            node->next = tempNode;
+            ++L->length;
+            printf("插入\"%s\"成功index:%d\n",value,index);
+            break;
+        }
+        currentNode = currentNode->next;
+        ++i;
+    }
+    return OK;
+}
 
 //查
+
+LinkNode * link_getNode(SingleLink L, int index) {
+    int i = 1;
+    LinkNode * currentNode = L;
+    while (currentNode->next != NULL) {
+        if (index == i) {
+            return currentNode;
+        }
+        currentNode = currentNode->next;
+        ++i;
+    }
+    return NULL;
+}
+
+//删
 
 //改
 
@@ -51,9 +93,17 @@ void testSingleLinkListOperation(void){
         for (int j = 0; j < 10; j ++) {
             buffer[j] = sourceString[rand()%62];
         }
-        buffer[10] = '\n';
+        buffer[10] = '\0';
         link_addValue(L, buffer);
-        printf("%s\n",buffer);
+    }
+    
+    link_insert(L, 1, "无心胭脂");
+    printf("获取%s\n",link_getNode(L, 1)->data);
+    
+    LinkNode * currentNode = L;
+    while (currentNode->next != NULL) {
+        printf("----%s\n",currentNode->data);
+        currentNode = currentNode->next;
     }
     
     printf("%s\n",L->data);

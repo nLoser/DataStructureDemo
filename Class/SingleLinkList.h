@@ -12,10 +12,11 @@
 #include <stdio.h>
 #include "Config.h"
 
-typedef struct{
+typedef struct LinkNode{
     ElemType data;
-    void * next;
-}LinkNode, * SingleLink;
+    struct LinkNode * next;
+    int length;
+} LinkNode, * SingleLink;
 
 Status link_init(LinkNode * L);
 
