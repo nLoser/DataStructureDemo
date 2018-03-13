@@ -12,13 +12,11 @@
 //初始化链头
 Status link_init(LinkNode * L) {
     if (!L) return OVERFLOW;
-    L->data = "我是链头";
+    L->data = "链头";
     L->next = NULL;
     L->length = 0;
     return OK;
 }
-
-//增
 
 Status link_addValue(SingleLink L,ElemType value) {
     LinkNode * node = (LinkNode *)malloc(sizeof(LinkNode));
@@ -37,27 +35,42 @@ Status link_addValue(SingleLink L,ElemType value) {
     return OK;
 }
 
-//插
 Status link_insert(SingleLink L, int index, ElemType value) {
     LinkNode * node = (LinkNode *)malloc(sizeof(LinkNode));
     if (!node) return ERROR;
     node->data = value;
+    node->next = NULL;
     
-    int i = 1;
-    LinkNode * currentNode = L;
-    while (currentNode->next != NULL) {
-        if (i == index) {
-            LinkNode * tempNode = currentNode->next;
-            currentNode->next = node;
-            node->next = tempNode;
-            ++L->length;
-            printf("插入\"%s\"成功index:%d\n",value,index);
-            break;
+    if (index == 1) {
+        LinkNode * tempLinkNode = L;
+        L = node;
+        L->next = tempLinkNode;
+        ++L->length;
+        printf("第1个value : %s\n",L->data);
+        return OK;
+    }else if (index >= L->length+1) {
+        if (index == L->length+1) {
+            link_addValue(L, value);
+        }else {
+            return OVERFLOW;
         }
-        currentNode = currentNode->next;
-        ++i;
+    }else {
+        int i = 1;
+        LinkNode * currentNode = L;
+        while (currentNode->next != NULL) {
+            if (i+1 == index) {
+                LinkNode * tempLinkNode = currentNode->next;
+                currentNode->next = node;
+                node->next = tempLinkNode;
+                ++L->length;
+                break;
+            }
+            currentNode = currentNode->next;
+            ++i;
+        }
+        return OK;
     }
-    return OK;
+    return ERROR;
 }
 
 //查
@@ -96,15 +109,17 @@ void testSingleLinkListOperation(void){
         buffer[10] = '\0';
         link_addValue(L, buffer);
     }
-    
-    link_insert(L, 1, "无心胭脂");
-    printf("获取%s\n",link_getNode(L, 1)->data);
+    link_insert(L, 1, "新版本链头");
     
     LinkNode * currentNode = L;
     while (currentNode->next != NULL) {
         printf("----%s\n",currentNode->data);
         currentNode = currentNode->next;
     }
+    printf("----%s\n",currentNode->data);
     
-    printf("%s\n",L->data);
+    //malloc
+    //内存动态存储区申请一个length = size 字节的连续空间；
+    //calloc
+    //内存动态存储区申请n个length = size 字节的连续空间；
 }
