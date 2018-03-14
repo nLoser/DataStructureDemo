@@ -9,68 +9,25 @@
 #include "SingleLinkList.h"
 #include <time.h>
 
-//初始化链头
-Status link_init(LinkNode * L) {
-    if (!L) return OVERFLOW;
-    L->data = "链头";
-    L->next = NULL;
-    L->length = 0;
+/*! 注意检查分配到的动态内存是否为空
+ 1.初始化线性表，即置单链表的表头指针为空
+ */
+
+Status InitList(SingleLink * L) {
+    * L = (Node *)malloc(sizeof(Node));
+    if (!(*L)) {
+        return OVERFLOW;
+    }
+    (*L)->next = NULL;
     return OK;
 }
 
-Status link_addValue(SingleLink L,ElemType value) {
-    LinkNode * node = (LinkNode *)malloc(sizeof(LinkNode));
-    if (!node) return ERROR;
-    node->data = value;
-    node->next = NULL;
-    
-    LinkNode * currentNode = L;
-    while (currentNode->next != NULL) {
-        currentNode = currentNode->next;
-    }
-    currentNode->next = node;
-    
-    ++L->length;
-    //printf("####添加数据(%s)成功%d####\n",node->data,L->length);
-    return OK;
-}
-
-/// 插入
-Status link_insert(SingleLink L, int index, ElemType value) {
-    LinkNode * node = L;
-    int j = 0;
-    while (node && j < index-1) {
-        node = node->next;
-        ++j;
-    }
-    if(!node || j > index) return ERROR;
-    LinkNode * tempNode = node->next;
-    
-    LinkNode * valueNode = (LinkNode *)malloc(sizeof(LinkNode));
-    valueNode->data = value;
-    valueNode->next = tempNode;
-    
-    node->next = valueNode;
-    
-    return ERROR;
-}
-
-LinkNode * link_getNode(SingleLink L, int index) {
-    int i = 1;
-    LinkNode * currentNode = L;
-    while (currentNode->next != NULL) {
-        if (index == i) {
-            return currentNode;
-        }
-        currentNode = currentNode->next;
-        ++i;
-    }
-    return NULL;
-}
+#pragma mark - Test
 
 void testSingleLinkListOperation(void){
-    SingleLink L = (LinkNode *)malloc(sizeof(LinkNode));
-    if (link_init(L) != 1) {
+    SingleLink L;
+    Status rt = InitList(&L);
+    if (rt != 1) {
         printf("初始化失败");
         return;
     }
@@ -83,19 +40,5 @@ void testSingleLinkListOperation(void){
             buffer[j] = sourceString[rand()%62];
         }
         buffer[10] = '\0';
-        link_addValue(L, buffer);
     }
-    link_insert(L, 3, "新版本链头");
-    
-    LinkNode * currentNode = L;
-    while (currentNode->next != NULL) {
-        printf("----%s\n",currentNode->data);
-        currentNode = currentNode->next;
-    }
-    printf("----%s\n",currentNode->data);
-    
-    //malloc
-    //内存动态存储区申请一个length = size 字节的连续空间；
-    //calloc
-    //内存动态存储区申请n个length = size 字节的连续空间；
 }
