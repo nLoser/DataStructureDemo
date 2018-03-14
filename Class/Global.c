@@ -17,5 +17,5 @@ void GetRandomString(char**buffer) {
         (*buffer)[i] = sourceString[rand()%62];
     }
     (*buffer)[10] = '\0';
-    printf("<%s\n",*buffer);
+    printf("<< %s\n",*buffer);
 }

@@ -10,7 +10,7 @@
 #include <time.h>
 
 /*! 注意检查分配到的动态内存是否为空
- 1.初始化线性表，即置单链表的表头指针为空
+ 1.初始化单链表
  */
 
 Status InitList(SingleLink * L) {
@@ -23,9 +23,22 @@ Status InitList(SingleLink * L) {
     return OK;
 }
 
+Node* GetElem(SingleLink L, int index) {
+    Node * node = L;
+    int i = 1;
+    while (node && i < index) {
+        node = node->next;
+        ++index;
+    }
+    if (!node || i > index) {
+        printf("Get element failed cause the index node is non-existent\n");
+        return ERROR;
+    }
+    printf("Get the node element:%s\n",node->elem);
+    return node;
+}
+
 #pragma mark - Test
-
-
 
 void testSingleLinkListOperation(void){
     SingleLink L;
@@ -37,6 +50,10 @@ void testSingleLinkListOperation(void){
         char * buffer;
         GetRandomString(&buffer);
     }
+    
+    GetElem(L, 1);
+    GetElem(L, 3);
+    GetElem(L, 4);
 }
 
 
