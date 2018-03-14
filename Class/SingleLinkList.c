@@ -19,6 +19,19 @@ Status InitList(SingleLink * L) {
     return OK;
 }
 
+void linkAdd(SingleLink L, ElemType value) {
+    Node * node = L;
+    while (node->next != NULL) {
+        node = node->next;
+    }
+    if (node) {
+        Node * tempNode = (Node *)malloc(sizeof(Node));
+        tempNode->elem = value;
+        tempNode->next = NULL;
+        node->next = tempNode;
+    }
+}
+
 Node* GetElem(SingleLink L, int index) {
     Node * node = L;
     int i = 1;
@@ -32,6 +45,15 @@ Node* GetElem(SingleLink L, int index) {
     }
     printf("Get the node element:%s\n",node->elem);
     return node;
+}
+
+void getLinkList(SingleLink L) {
+    Node * node = L;
+    while (node->next != NULL) {
+        printf("get<< %s\n",node->elem);
+        node = node->next;
+    }
+    printf("get<< %s\n",node->elem);
 }
 
 Status ListInsert(SingleLink * L, int index, ElemType elem) {
@@ -52,26 +74,21 @@ Status ListInsert(SingleLink * L, int index, ElemType elem) {
     return OK;
 }
 
-void linkAdd(SingleLink L, ElemType value) {
-    Node * node = L;
-    while (node->next != NULL) {
-        node = node->next;
+Status ListDelete(SingleLink * L, int index) {
+    SingleLink newL = *L;
+    int i = 0;
+    while (newL->next && i < index-1) { //头结点不可删除
+        newL = newL->next;
+        ++i;
     }
-    if (node) {
-        Node * tempNode = (Node *)malloc(sizeof(Node));
-        tempNode->elem = value;
-        tempNode->next = NULL;
-        node->next = tempNode;
+    if(!(newL->next) || i > index-1) {
+        printf("Delete element failed!\n");
+        return OVERFLOW;
     }
-}
-
-void getLinkList(SingleLink L) {
-    Node * node = L;
-    while (node->next != NULL) {
-        printf("get<< %s\n",node->elem);
-        node = node->next;
-    }
-    printf("get<< %s\n",node->elem);
+    SingleLink newS = newL->next;
+    newL->next = newS->next;
+    free(newS);
+    return OK;
 }
 
 #pragma mark - Test
@@ -89,7 +106,9 @@ void testSingleLinkListOperation(void){
     }
     
     ListInsert(&L, 1, "插入一个值");
-    
+    getLinkList(L);
+    printf("\n\n");
+    ListDelete(&L, 6);
     getLinkList(L);
 }
 
