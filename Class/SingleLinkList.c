@@ -31,49 +31,29 @@ Status link_addValue(SingleLink L,ElemType value) {
     currentNode->next = node;
     
     ++L->length;
-    printf("####添加数据(%s)成功%d####\n",node->data,L->length);
+    //printf("####添加数据(%s)成功%d####\n",node->data,L->length);
     return OK;
 }
 
+/// 插入
 Status link_insert(SingleLink L, int index, ElemType value) {
-    LinkNode * node = (LinkNode *)malloc(sizeof(LinkNode));
-    if (!node) return ERROR;
-    node->data = value;
-    node->next = NULL;
-    
-    if (index == 1) {
-        LinkNode * tempLinkNode = L;
-        L = node;
-        L->next = tempLinkNode;
-        ++L->length;
-        printf("第1个value : %s\n",L->data);
-        return OK;
-    }else if (index >= L->length+1) {
-        if (index == L->length+1) {
-            link_addValue(L, value);
-        }else {
-            return OVERFLOW;
-        }
-    }else {
-        int i = 1;
-        LinkNode * currentNode = L;
-        while (currentNode->next != NULL) {
-            if (i+1 == index) {
-                LinkNode * tempLinkNode = currentNode->next;
-                currentNode->next = node;
-                node->next = tempLinkNode;
-                ++L->length;
-                break;
-            }
-            currentNode = currentNode->next;
-            ++i;
-        }
-        return OK;
+    LinkNode * node = L;
+    int j = 0;
+    while (node && j < index-1) {
+        node = node->next;
+        ++j;
     }
+    if(!node || j > index) return ERROR;
+    LinkNode * tempNode = node->next;
+    
+    LinkNode * valueNode = (LinkNode *)malloc(sizeof(LinkNode));
+    valueNode->data = value;
+    valueNode->next = tempNode;
+    
+    node->next = valueNode;
+    
     return ERROR;
 }
-
-//查
 
 LinkNode * link_getNode(SingleLink L, int index) {
     int i = 1;
@@ -87,10 +67,6 @@ LinkNode * link_getNode(SingleLink L, int index) {
     }
     return NULL;
 }
-
-//删
-
-//改
 
 void testSingleLinkListOperation(void){
     SingleLink L = (LinkNode *)malloc(sizeof(LinkNode));
@@ -109,7 +85,7 @@ void testSingleLinkListOperation(void){
         buffer[10] = '\0';
         link_addValue(L, buffer);
     }
-    link_insert(L, 1, "新版本链头");
+    link_insert(L, 3, "新版本链头");
     
     LinkNode * currentNode = L;
     while (currentNode->next != NULL) {
