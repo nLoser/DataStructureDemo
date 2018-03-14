@@ -38,6 +38,34 @@ Node* GetElem(SingleLink L, int index) {
     return node;
 }
 
+Status ListInsert(SingleLink * L, int index, ElemType elem) {
+    SingleLink newL = *L;
+    int i = 0;
+    while (newL && i < index-1) {
+        newL = newL->next;
+        ++i;
+    }
+    if(!newL || i>index-1) {
+        printf("Inset element failed!\n");
+        return ERROR;
+    }
+    SingleLink newS = (Node *)malloc(sizeof(Node));
+    newS->elem = elem;
+    newS->next = newL->next;
+    newL->next = newS;
+    printf("Insert element Success!\n");
+    return OK;
+}
+
+void getLinkList(SingleLink L) {
+    Node * node = L;
+    while (node->next != NULL) {
+        printf("get<< %s\n",node->elem);
+        node = node->next;
+    }
+    printf("get<< %s\n",node->elem);
+}
+
 #pragma mark - Test
 
 void testSingleLinkListOperation(void){
@@ -46,14 +74,14 @@ void testSingleLinkListOperation(void){
     if(rt != OK) return;
     
     srand((unsigned int)time(NULL));
-    for (int i = 0; i < 10; i ++) {
+    for (int i = 1; i < 10; i ++) {
         char * buffer;
         GetRandomString(&buffer);
+        ListInsert(&L, i, buffer);
     }
-    
-    GetElem(L, 1);
-    GetElem(L, 3);
-    GetElem(L, 4);
+    getLinkList(L);
+    ListInsert(&L, 1, "插入一个值");
+    getLinkList(L);
 }
 
 
