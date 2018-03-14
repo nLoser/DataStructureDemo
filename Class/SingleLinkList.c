@@ -92,18 +92,16 @@ Status ListDelete(SingleLink * L, int index) {
 }
 
 void listReverse(SingleLink head) {
-    SingleLink p, q,pr;
-    p = head->next;
-    q = NULL;
-    head->next = NULL;
-    
-    while (p) {
-        pr = p->next;
-        p->next = q;
-        q = p;
-        p = pr;
+    SingleLink cur, temp, new;
+    cur = head->next;
+    new = NULL;
+    while (cur) {
+        temp = cur->next;
+        cur->next = new;
+        new = cur;
+        cur = temp;
     }
-    head->next = q;
+    head->next = new;
 }
 
 #pragma mark - Test
@@ -120,10 +118,7 @@ void testSingleLinkListOperation(void){
         linkAdd(L, buffer);
     }
     
-    ListInsert(&L, 1, "插入一个值");
-    getLinkList(L);
-    printf("\n\n");
-    ListDelete(&L, 6);
+    ListInsert(&L, 1, "插入Node");
     getLinkList(L);
     printf("\n\n");
     listReverse(L);
