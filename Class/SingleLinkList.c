@@ -9,10 +9,6 @@
 #include "SingleLinkList.h"
 #include <time.h>
 
-/*! 注意检查分配到的动态内存是否为空
- 1.初始化单链表
- */
-
 Status InitList(SingleLink * L) {
     * L = (Node *)malloc(sizeof(Node));
     if (!(*L)) {
@@ -56,6 +52,19 @@ Status ListInsert(SingleLink * L, int index, ElemType elem) {
     return OK;
 }
 
+void linkAdd(SingleLink L, ElemType value) {
+    Node * node = L;
+    while (node->next != NULL) {
+        node = node->next;
+    }
+    if (node) {
+        Node * tempNode = (Node *)malloc(sizeof(Node));
+        tempNode->elem = value;
+        tempNode->next = NULL;
+        node->next = tempNode;
+    }
+}
+
 void getLinkList(SingleLink L) {
     Node * node = L;
     while (node->next != NULL) {
@@ -73,10 +82,10 @@ void testSingleLinkListOperation(void){
     if(rt != OK) return;
     
     srand((unsigned int)time(NULL));
-    for (int i = 1; i < 10; i ++) {
+    for (int i = 0; i < 4; i ++) {
         char * buffer;
         GetRandomString(&buffer);
-        ListInsert(&L, i, buffer);
+        linkAdd(L, buffer);
     }
     
     ListInsert(&L, 1, "插入一个值");
