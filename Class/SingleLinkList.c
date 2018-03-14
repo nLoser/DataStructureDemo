@@ -53,7 +53,6 @@ Status ListInsert(SingleLink * L, int index, ElemType elem) {
     newS->elem = elem;
     newS->next = newL->next;
     newL->next = newS;
-    printf("Insert element Success!\n");
     return OK;
 }
 
@@ -79,8 +78,9 @@ void testSingleLinkListOperation(void){
         GetRandomString(&buffer);
         ListInsert(&L, i, buffer);
     }
-    getLinkList(L);
+    
     ListInsert(&L, 1, "插入一个值");
+    
     getLinkList(L);
 }
 
