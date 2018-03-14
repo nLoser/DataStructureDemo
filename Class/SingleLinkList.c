@@ -50,10 +50,10 @@ Node* GetElem(SingleLink L, int index) {
 void getLinkList(SingleLink L) {
     Node * node = L;
     while (node->next != NULL) {
-        printf("get<< %s\n",node->elem);
+        printf("put<< %s\n",node->elem);
         node = node->next;
     }
-    printf("get<< %s\n",node->elem);
+    printf("put<< %s\n",node->elem);
 }
 
 Status ListInsert(SingleLink * L, int index, ElemType elem) {
@@ -91,6 +91,21 @@ Status ListDelete(SingleLink * L, int index) {
     return OK;
 }
 
+void listReverse(SingleLink head) {
+    SingleLink p, q,pr;
+    p = head->next;
+    q = NULL;
+    head->next = NULL;
+    
+    while (p) {
+        pr = p->next;
+        p->next = q;
+        q = p;
+        p = pr;
+    }
+    head->next = q;
+}
+
 #pragma mark - Test
 
 void testSingleLinkListOperation(void){
@@ -109,6 +124,9 @@ void testSingleLinkListOperation(void){
     getLinkList(L);
     printf("\n\n");
     ListDelete(&L, 6);
+    getLinkList(L);
+    printf("\n\n");
+    listReverse(L);
     getLinkList(L);
 }
 

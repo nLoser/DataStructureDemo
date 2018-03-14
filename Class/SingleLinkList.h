@@ -4,7 +4,7 @@
 //
 //  Created by LV on 2018/3/11.
 //  Copyright © 2018年 LV. All rights reserved.
-// 增 删 改 查
+//
 
 #ifndef SingleLinkList_h
 #define SingleLinkList_h
@@ -18,5 +18,12 @@ typedef struct Node{
 } Node, * SingleLink;
 
 void testSingleLinkListOperation(void);
+
+Status InitList(SingleLink * L);
+void linkAdd(SingleLink L, ElemType value);
+void getLinkList(SingleLink L);
+Node* GetElem(SingleLink L, int index);
+Status ListInsert(SingleLink * L, int index, ElemType elem);
+Status ListDelete(SingleLink * L, int index);
 
 #endif 
