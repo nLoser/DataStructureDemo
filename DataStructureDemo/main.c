@@ -11,7 +11,7 @@
 #include "SingleLinkList.h"
 
 int main(int argc, const char * argv[]) {
-    //testSequentialLinkOperation();
+//    testSequentialLinkOperation();
     testSingleLinkListOperation();
     return 0;
 }

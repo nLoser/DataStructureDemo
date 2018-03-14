@@ -75,16 +75,11 @@ void testSequentialLinkOperation(void){
     SqList * L = (SqList *)malloc(sizeof(SqList));
     sqlist_init(L, 1000);
     
-    char * sourceString = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
     srand((unsigned int)time(NULL));
     for (int i = 0; i < 10; i++) {
-        char * buffer = malloc(sizeof(char) * 10);
-        for (int j = 0; j < 10; j ++) {
-            buffer[j] = sourceString[rand()%62];
-        }
-        buffer[10] = '\0';
+        char * buffer;
+        GetRandomString(&buffer);
         sqlist_addValue(L, buffer);
-        printf("%s\n",buffer);
     }
     printf("当前长度:%d\n",L->length);
     sqlist_insert(L, 1, "这是我插入的一个数");

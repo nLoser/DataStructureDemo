@@ -16,6 +16,7 @@
 Status InitList(SingleLink * L) {
     * L = (Node *)malloc(sizeof(Node));
     if (!(*L)) {
+        printf("Init faied cause OVERFLOW");
         return OVERFLOW;
     }
     (*L)->next = NULL;
@@ -24,21 +25,18 @@ Status InitList(SingleLink * L) {
 
 #pragma mark - Test
 
+
+
 void testSingleLinkListOperation(void){
     SingleLink L;
     Status rt = InitList(&L);
-    if (rt != 1) {
-        printf("初始化失败");
-        return;
-    }
+    if(rt != OK) return;
     
-    char * sourceString = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
     srand((unsigned int)time(NULL));
     for (int i = 0; i < 10; i ++) {
-        char * buffer = malloc(sizeof(char) * 10);
-        for (int j = 0; j < 10; j ++) {
-            buffer[j] = sourceString[rand()%62];
-        }
-        buffer[10] = '\0';
+        char * buffer;
+        GetRandomString(&buffer);
     }
 }
+
+

@@ -10,6 +10,7 @@
 #define Config_h
 
 #include <stdlib.h>
+#include "Global.h"
 
 typedef int Status;
 typedef char * ElemType;
