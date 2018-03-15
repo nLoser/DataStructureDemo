@@ -10,5 +10,6 @@
 #define String_h
 
 #include <stdio.h>
+#include "Config.h"
 
 #endif /* String_h */

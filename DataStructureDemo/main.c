@@ -9,9 +9,11 @@
 #include <stdio.h>
 #include "SequentialLink.h"
 #include "SingleLinkList.h"
+#include "StackLink.h"
 
 int main(int argc, const char * argv[]) {
-//    testSequentialLinkOperation();
-    testSingleLinkListOperation();
+    //testSequentialLinkOperation();
+    //testSingleLinkListOperation();
+    testStackListOperation();
     return 0;
 }

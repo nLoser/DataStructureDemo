@@ -121,6 +121,7 @@ void testSingleLinkListOperation(void){
     ListInsert(&L, 1, "插入Node");
     getLinkList(L);
     printf("\n\n");
+    printf("单链表倒叙\n");
     listReverse(L);
     getLinkList(L);
 }
