@@ -17,7 +17,6 @@ Status stack_init(StackList * stack) {
         printf("Init failed cause OVERFLOW");
         return OVERFLOW;
     }
-    printf("Init success!\n");
     (*stack)->bottom = (*stack)->top;
     (*stack)->bottom->elem = "#BOTTOM#";
     (*stack)->top->next = NULL;
@@ -29,14 +28,14 @@ Status stack_push(StackList stack, ElemType elem) {
         printf("Stack is null");
         return ERROR;
     }
-    sNode * node = (sNode*)malloc(sizeof(sNode));
-    if(node == NULL) {
+    sNode * newNode = (sNode*)malloc(sizeof(sNode));
+    if(newNode == NULL) {
         printf("Push failed!\n");
         return OVERFLOW;
     }
-    node->elem = elem;
-    node->next = stack->top;
-    stack->top = node;
+    newNode->elem = elem;
+    newNode->next = stack->top;
+    stack->top = newNode; //top永远指的是栈顶
     return OK;
 }
 
@@ -73,11 +72,32 @@ Status stack_output(StackList stack) {
     return OK;
 }
 
+Status stack_clean(StackList stack) {
+    if (stack == NULL) {
+        printf("Stack clean failed cause stack is not exit\n");
+        return ERROR;
+    }
+    if (stack->top == stack->bottom) {
+        printf("Stack is null\n");
+        return ERROR;
+    }
+    
+    sNode * freeNode = stack->top;
+    sNode * curNode = stack->top;
+    
+    while (freeNode->next != NULL) {
+        curNode = curNode->next;
+        free(freeNode);
+        freeNode = curNode;
+    }
+    stack->top = curNode;
+    return OK;
+}
+
 //test
 void testStackListOperation(void) {
     StackList stack;
     stack_init(&stack);
-    printf("\n\n");
     
     stack_push(stack, "吕洪阳");
     stack_push(stack, "Stay foolish, stay hungry.");
@@ -87,6 +107,10 @@ void testStackListOperation(void) {
         GetRandomString(&str);
         stack_push(stack, str);
     }
+    stack_output(stack);
+    printf("\n\n");
+    
+    stack_clean(stack);
     stack_output(stack);
     printf("\n\n");
 }
