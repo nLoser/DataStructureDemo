@@ -10,6 +10,7 @@
 		A926CD222055245500CA94E1 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = A926CD212055245500CA94E1 /* main.c */; };
 		A926CD2B205524B600CA94E1 /* SingleLinkList.c in Sources */ = {isa = PBXBuildFile; fileRef = A926CD2A205524B600CA94E1 /* SingleLinkList.c */; };
 		A926CD2E205524FC00CA94E1 /* SequentialLink.c in Sources */ = {isa = PBXBuildFile; fileRef = A926CD2D205524FC00CA94E1 /* SequentialLink.c */; };
+		A929FA53205A129700E60AD3 /* String.c in Sources */ = {isa = PBXBuildFile; fileRef = A929FA52205A129700E60AD3 /* String.c */; };
 		A92B4D5A2058C39100FCC641 /* Global.c in Sources */ = {isa = PBXBuildFile; fileRef = A92B4D592058C39100FCC641 /* Global.c */; };
 /* End PBXBuildFile section */
 
@@ -33,6 +34,8 @@
 		A926CD2C205524FC00CA94E1 /* SequentialLink.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SequentialLink.h; sourceTree = "<group>"; };
 		A926CD2D205524FC00CA94E1 /* SequentialLink.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = SequentialLink.c; sourceTree = "<group>"; };
 		A926CD2F205526A800CA94E1 /* Config.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Config.h; sourceTree = "<group>"; };
+		A929FA51205A129700E60AD3 /* String.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = String.h; sourceTree = "<group>"; };
+		A929FA52205A129700E60AD3 /* String.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = String.c; sourceTree = "<group>"; };
 		A92B4D582058C39100FCC641 /* Global.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Global.h; sourceTree = "<group>"; };
 		A92B4D592058C39100FCC641 /* Global.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = Global.c; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -83,6 +86,8 @@
 				A926CD2D205524FC00CA94E1 /* SequentialLink.c */,
 				A926CD29205524B600CA94E1 /* SingleLinkList.h */,
 				A926CD2A205524B600CA94E1 /* SingleLinkList.c */,
+				A929FA51205A129700E60AD3 /* String.h */,
+				A929FA52205A129700E60AD3 /* String.c */,
 			);
 			path = Class;
 			sourceTree = "<group>";
@@ -144,6 +149,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A929FA53205A129700E60AD3 /* String.c in Sources */,
 				A926CD2E205524FC00CA94E1 /* SequentialLink.c in Sources */,
 				A926CD222055245500CA94E1 /* main.c in Sources */,
 				A92B4D5A2058C39100FCC641 /* Global.c in Sources */,
