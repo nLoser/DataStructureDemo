@@ -15,7 +15,7 @@
 //ADT:
 
 typedef struct sNode{
-    char * data;
+    ElemType elem;
     struct sNode * next;
 }sNode;
 
