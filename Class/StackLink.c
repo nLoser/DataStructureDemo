@@ -19,8 +19,7 @@ Status stack_init(StackList * stack) {
     }
     printf("Init success!\n");
     (*stack)->bottom = (*stack)->top;
-    (*stack)->bottom->elem = "bottom";
-    (*stack)->top->elem = "top";
+    (*stack)->bottom->elem = "#BOTTOM#";
     (*stack)->top->next = NULL;
     return OK;
 }
@@ -53,7 +52,6 @@ Status stack_pop(StackList stack) {
     sNode * freeNode = stack->top;
     stack->top = stack->top->next;
     free(freeNode);
-    printf("Pop Success\n");
     return OK;
 }
 
@@ -71,6 +69,7 @@ Status stack_output(StackList stack) {
         printf("put<< %s\n",curNode->elem);
         curNode = curNode->next;
     }
+    printf("%s\n",curNode->elem);
     return OK;
 }
 
@@ -78,17 +77,12 @@ Status stack_output(StackList stack) {
 void testStackListOperation(void) {
     StackList stack;
     stack_init(&stack);
+    printf("\n\n");
     
     stack_push(stack, "吕洪阳");
-    stack_push(stack, "Stay foolish, stay hungry");
-    stack_output(stack);
-    printf("\n\n");
-    
-    stack_pop(stack);
-    stack_output(stack);
-    printf("\n\n");
-
-    for (int i = 0; i < 10; i++) {
+    stack_push(stack, "Stay foolish, stay hungry.");
+    stack_push(stack, "Of course!");
+    for (int i = 0; i < 2; i++) {
         char * str;
         GetRandomString(&str);
         stack_push(stack, str);
