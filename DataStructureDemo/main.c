@@ -14,10 +14,10 @@
 #include "queueToStack.h"
 
 int main(int argc, const char * argv[]) {
-    //testSequentialLinkOperation();
-    //testSingleLinkListOperation();
-    //testStackListOperation();
-    testQueueListOperation();
-    //testQueueToStackOperation();
+//    testSequentialLinkOperation();
+//    testSingleLinkListOperation();
+//    testStackListOperation();
+//    testQueueListOperation();
+    testQueueToStackOperation();
     return 0;
 }

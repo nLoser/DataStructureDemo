@@ -7,7 +7,8 @@
 //
 
 #include "queueToStack.h"
-
+#include <stdlib.h>
+#include <String.h>
 /*
  两个队列模拟一个栈的思路:
  q1 q2
@@ -77,17 +78,39 @@ Status pop_qTs(Queue q1, Queue q2) {
     return OK;
 }
 
+FILE * stream;
 void testQueueToStackOperation(void) {
     Queue q1, q2;
     queue_init(&q1);
     queue_init(&q2);
     
-    push_qTs(q1, q2, "压栈1");
-    push_qTs(q1, q2, "压栈2");
-    push_qTs(q1, q2, "压栈3");
+    for (int i = 0 ; i < 10; i ++) {
+        char * string;
+        GetRandomString(&string);
+        push_qTs(q1, q2, string);
+    }
+    queue_show(q1);
+    queue_show(q2);
     
     pop_qTs(q1, q2);
-    //pop_qTs(q1, q2);
+    pop_qTs(q1, q2);
+    
+    queue_show(q1);
+    queue_show(q2);
+    
+    pop_qTs(q1, q2);
+    
+    queue_show(q1);
+    queue_show(q2);
+    
+    pop_qTs(q1, q2);
+    pop_qTs(q1, q2);
+    pop_qTs(q1, q2);
+    pop_qTs(q1, q2);
+    pop_qTs(q1, q2);
+    pop_qTs(q1, q2);
+    pop_qTs(q1, q2);
+    pop_qTs(q1, q2);
     
     queue_show(q1);
     queue_show(q2);
