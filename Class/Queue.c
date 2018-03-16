@@ -22,7 +22,23 @@ Status queue_init(Queue * Q) {
     return OK;
 }
 
-Status queue_add(Queue Q, ElemType value) {
+Status queue_show(Queue Q) {
+    if (Q->front == Q->rear) {
+        printf("Show queue failed cause queue is null");
+        return ERROR;
+    }
+    qNode * node = Q->front->next;
+    int i = 0;
+    while (node != NULL) {
+        i++;
+        printf("put<< %s\n",node->elem);
+        node = node->next;
+    }
+    printf("元素个数:%d\n", i);
+    return OK;
+}
+
+Status queue_in(Queue Q, ElemType value) {
     qNode * newRearNode = (qNode *)malloc(sizeof(qNode));
     if (newRearNode == NULL) {
         return OVERFLOW;
@@ -34,16 +50,14 @@ Status queue_add(Queue Q, ElemType value) {
     return OK;
 }
 
-Status queue_show(Queue Q) {
+Status queue_out(Queue Q) {
     if (Q->front == Q->rear) {
-        printf("Show queue failed cause queue is null");
+        printf("Out failed cause queue is null!");
         return ERROR;
     }
-    qNode * node = Q->front->next;
-    while (node->next != NULL) {
-        printf("put<< %s\n",node->elem);
-        node = node->next;
-    }
+    qNode * freeNode = Q->front->next;
+    Q->front->next = Q->front->next->next;
+    free(freeNode);
     return OK;
 }
 
@@ -52,10 +66,16 @@ void testQueueListOperation(void) {
     queue_init(&q);
     printf("\n\n");
     
-    for (int i = 0; i < 10; i ++) {
+    for (int i = 0; i < 2; i ++) {
         char * buffer;
         GetRandomString(&buffer);
-        queue_add(q, buffer);
+        queue_in(q, buffer);
     }
+    printf("增加之后\n");
+    queue_show(q);
+    printf("\n\n");
+    
+    printf("移除之后\n");
+    queue_out(q);
     queue_show(q);
 }
