@@ -12,8 +12,6 @@
 #include <stdio.h>
 #include "Config.h"
 
-//ADT:
-
 typedef struct sNode{
     ElemType elem;
     struct sNode * next;
@@ -33,4 +31,4 @@ Status stack_clean(StackList stack);
 //test
 void testStackListOperation(void);
 
-#endif /* StackLink_h */
+#endif
