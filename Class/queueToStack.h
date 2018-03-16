@@ -14,7 +14,7 @@
 
 #include <stdio.h>
 
-Status push_qTs(ElemType value, Queue q1, Queue q2);
+Status push_qTs(Queue q1, Queue q2, ElemType value);
 Status pop_qTs(Queue q1, Queue q2);
 
 //test

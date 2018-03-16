@@ -29,14 +29,13 @@ Status pop_qTs(Queue q1, Queue q2) {
     
     int q1num = queue_elemNumber(q1);
     int q2num = queue_elemNumber(q2);
+    
     if (q1num == 1) {
         queue_out(q1);
-        printf("pop stack : q1\n");
         return OK;
     }
     if (q2num == 1) {
         queue_out(q2);
-        printf("pop stack : q2\n");
         return OK;
     }
     
@@ -50,17 +49,28 @@ Status pop_qTs(Queue q1, Queue q2) {
         queue = q1;
     }
     qNode * currentNode = stackq->front->next;
-    while (currentNode->next->next != NULL) {
+    while (currentNode->next != NULL) {
         queue_in(queue, currentNode->elem);
         queue_out(stackq);
-        currentNode = stackq->front->next;
+        currentNode = currentNode->next;
     }
     queue_out(stackq);
     return OK;
 }
 
-Status push_qTs(ElemType value, Queue q1, Queue q2) {
-    
+Status push_qTs(Queue q1, Queue q2, ElemType value) {
+    if ((queue_isEmpty(q1) == OK) && (queue_isEmpty(q2) == OK)) {
+        queue_in(q1, value);
+        return OK;
+    }
+    if (queue_elemNumber(q1) > 0) {
+        queue_in(q1, value);
+        return OK;
+    }
+    if (queue_elemNumber(q2) > 0) {
+        queue_in(q2, value);
+        return OK;
+    }
     return OK;
 }
 
@@ -68,14 +78,13 @@ void testQueueToStackOperation(void) {
     Queue q1, q2;
     queue_init(&q1);
     queue_init(&q2);
-    queue_in(q1, "压栈1");
-    queue_in(q1, "压栈2");
-
+    
+    push_qTs(q1, q2, "压栈1");
+    push_qTs(q1, q2, "压栈2");
+    push_qTs(q1, q2, "压栈3");
+    pop_qTs(q1, q2);
     pop_qTs(q1, q2);
     
-    printf("\nQ1\n");
     queue_show(q1);
-    
-    printf("\nQ2\n");
     queue_show(q2);
 }

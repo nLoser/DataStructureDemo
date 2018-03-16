@@ -14,11 +14,11 @@ Status queue_init(Queue * Q) {
         (*Q)->front = (qNode *)malloc(sizeof(qNode));
     }
     if ((*Q) == NULL || ((*Q)->front) == NULL) {
+        printf("Init failed!\n");
         return OVERFLOW;
     }
     (*Q)->rear = (*Q)->front;
     (*Q)->front->elem = "Front";
-    printf("Init success.\n");
     return OK;
 }
 
@@ -44,17 +44,17 @@ Status queue_isEmpty(Queue Q) {
 
 Status queue_show(Queue Q) {
     if (Q->front == Q->rear) {
-        printf("Show queue failed cause queue is null!\n");
+        printf("\nShow queue failed cause queue is null!\n");
         return ERROR;
     }
     qNode * node = Q->front->next;
     int i = 0;
+    printf("\n<Front>%s\n",Q->front->elem);
     while (node != NULL) {
         i++;
         printf("put<< %s\n",node->elem);
         node = node->next;
     }
-    printf("element number:%d\n", i);
     return OK;
 }
 
