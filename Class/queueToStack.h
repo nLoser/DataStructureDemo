@@ -14,8 +14,8 @@
 
 #include <stdio.h>
 
-void push(ElemType value);
-void pop(void);
+Status push_qTs(ElemType value, Queue q1, Queue q2);
+Status pop_qTs(Queue q1, Queue q2);
 
 //test
 void testQueueToStackOperation(void);

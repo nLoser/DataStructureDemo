@@ -11,11 +11,13 @@
 #include "SingleLinkList.h"
 #include "StackLink.h"
 #include "Queue.h"
+#include "queueToStack.h"
 
 int main(int argc, const char * argv[]) {
     //testSequentialLinkOperation();
     //testSingleLinkListOperation();
     //testStackListOperation();
-    testQueueListOperation();
+    //testQueueListOperation();
+    testQueueToStackOperation();
     return 0;
 }
