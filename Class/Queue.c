@@ -22,9 +22,29 @@ Status queue_init(Queue * Q) {
     return OK;
 }
 
+int queue_elemNumber(Queue Q) {
+    if (queue_isEmpty(Q) == OK) {
+        return 0;
+    }
+    qNode * node = Q->front->next;
+    int i = 0;
+    while (node != NULL) {
+        i++;
+        node = node->next;
+    }
+    return i;
+}
+
+Status queue_isEmpty(Queue Q) {
+    if (Q->front == Q->rear) {
+        return OK;
+    }
+    return ERROR;
+}
+
 Status queue_show(Queue Q) {
     if (Q->front == Q->rear) {
-        printf("Show queue failed cause queue is null");
+        printf("Show queue failed cause queue is null!\n");
         return ERROR;
     }
     qNode * node = Q->front->next;

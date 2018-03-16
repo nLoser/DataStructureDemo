@@ -22,6 +22,8 @@ typedef struct queue{
     qNode * rear;
 }queue, * Queue;
 
+int queue_elemNumber(Queue Q);
+Status queue_isEmpty(Queue Q);
 Status queue_init(Queue * Q);
 Status queue_show(Queue Q);
 Status queue_in(Queue Q, ElemType value);
