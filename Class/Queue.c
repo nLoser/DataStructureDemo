@@ -34,7 +34,7 @@ Status queue_show(Queue Q) {
         printf("put<< %s\n",node->elem);
         node = node->next;
     }
-    printf("元素个数:%d\n", i);
+    printf("element number:%d\n", i);
     return OK;
 }
 

@@ -22,6 +22,12 @@ typedef struct queue{
     qNode * rear;
 }queue, * Queue;
 
+Status queue_init(Queue * Q);
+Status queue_show(Queue Q);
+Status queue_in(Queue Q, ElemType value);
+Status queue_out(Queue Q);
+
+//test
 void testQueueListOperation(void);
 
 #endif /* Queue_h */
