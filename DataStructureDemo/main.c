@@ -17,7 +17,7 @@ int main(int argc, const char * argv[]) {
     //testSequentialLinkOperation();
     //testSingleLinkListOperation();
     //testStackListOperation();
-    //testQueueListOperation();
-    testQueueToStackOperation();
+    testQueueListOperation();
+    //testQueueToStackOperation();
     return 0;
 }

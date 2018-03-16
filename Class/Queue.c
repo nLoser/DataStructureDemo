@@ -47,9 +47,9 @@ Status queue_show(Queue Q) {
         printf("\nShow queue failed cause queue is null!\n");
         return ERROR;
     }
+    printf("\n<Front>%s\n",Q->front->elem);
     qNode * node = Q->front->next;
     int i = 0;
-    printf("\n<Front>%s\n",Q->front->elem);
     while (node != NULL) {
         i++;
         printf("put<< %s\n",node->elem);
@@ -72,11 +72,14 @@ Status queue_in(Queue Q, ElemType value) {
 
 Status queue_out(Queue Q) {
     if (Q->front == Q->rear) {
-        printf("Out failed cause queue is null!");
+        printf("Out failed because queue is null!");
         return ERROR;
     }
     qNode * freeNode = Q->front->next;
     Q->front->next = Q->front->next->next;
+    if (Q->rear == freeNode) {
+        Q->rear = Q->front;
+    }
     free(freeNode);
     return OK;
 }
@@ -84,18 +87,12 @@ Status queue_out(Queue Q) {
 void testQueueListOperation(void) {
     Queue q;
     queue_init(&q);
+    printf("\n队列%s\n",queue_isEmpty(q)==1?"是空的！":"不是空的！");
     printf("\n\n");
     
-    for (int i = 0; i < 2; i ++) {
-        char * buffer;
-        GetRandomString(&buffer);
-        queue_in(q, buffer);
-    }
-    printf("增加之后\n");
-    queue_show(q);
-    printf("\n\n");
-    
-    printf("移除之后\n");
+    queue_in(q, "任务1");
+    queue_in(q, "任务2");
     queue_out(q);
-    queue_show(q);
+    
+    printf("\n队列%s\n",queue_isEmpty(q)==1?"是空的！":"不是空的！");
 }

@@ -21,6 +21,22 @@
  2.如果其中一个队列A有元素，则在这个队列后入栈将要入栈的元素；
  */
 
+Status push_qTs(Queue q1, Queue q2, ElemType elem) {
+    if ((queue_isEmpty(q1) == OK) && (queue_isEmpty(q2) == OK)) {
+        queue_in(q1, elem);
+        return OK;
+    }
+    if (queue_elemNumber(q1) > 0) {
+        queue_in(q1, elem);
+        return OK;
+    }
+    if (queue_elemNumber(q2) > 0) {
+        queue_in(q2, elem);
+        return OK;
+    }
+    return OK;
+}
+
 Status pop_qTs(Queue q1, Queue q2) {
     if ((queue_isEmpty(q1) == OK) && (queue_isEmpty(q2) == OK)) {
         printf("Pop failed because both q1 and q2 are null!\n");
@@ -39,37 +55,24 @@ Status pop_qTs(Queue q1, Queue q2) {
         return OK;
     }
     
-    Queue stackq;
-    Queue queue;
     if (q1num > 1) {
-        stackq = q1;
-        queue = q2;
-    }else {
-        stackq = q2;
-        queue = q1;
-    }
-    qNode * currentNode = stackq->front->next;
-    while (currentNode->next != NULL) {
-        queue_in(queue, currentNode->elem);
-        queue_out(stackq);
-        currentNode = currentNode->next;
-    }
-    queue_out(stackq);
-    return OK;
-}
-
-Status push_qTs(Queue q1, Queue q2, ElemType value) {
-    if ((queue_isEmpty(q1) == OK) && (queue_isEmpty(q2) == OK)) {
-        queue_in(q1, value);
-        return OK;
-    }
-    if (queue_elemNumber(q1) > 0) {
-        queue_in(q1, value);
-        return OK;
-    }
-    if (queue_elemNumber(q2) > 0) {
-        queue_in(q2, value);
-        return OK;
+        qNode * currentNode = q1->front->next;
+        while (currentNode->next != NULL) {
+            queue_in(q2, currentNode->elem);
+            queue_out(q1);
+            currentNode = currentNode->next;
+        }
+        queue_out(q1);
+        
+        queue_isEmpty(q1);
+    }else if (q2num > 1) {
+        qNode * currentNode = q2->front->next;
+        while (currentNode->next != NULL) {
+            queue_in(q1, currentNode->elem);
+            queue_out(q2);
+            currentNode = currentNode->next;
+        }
+        queue_out(q2);
     }
     return OK;
 }
@@ -82,9 +85,12 @@ void testQueueToStackOperation(void) {
     push_qTs(q1, q2, "压栈1");
     push_qTs(q1, q2, "压栈2");
     push_qTs(q1, q2, "压栈3");
+    
     pop_qTs(q1, q2);
-    pop_qTs(q1, q2);
+    //pop_qTs(q1, q2);
     
     queue_show(q1);
     queue_show(q2);
+    
+    printf("\n\n\n\n");
 }
