@@ -12,6 +12,7 @@
 		A926CD2E205524FC00CA94E1 /* SequentialLink.c in Sources */ = {isa = PBXBuildFile; fileRef = A926CD2D205524FC00CA94E1 /* SequentialLink.c */; };
 		A929FA53205A129700E60AD3 /* String.c in Sources */ = {isa = PBXBuildFile; fileRef = A929FA52205A129700E60AD3 /* String.c */; };
 		A929FA56205A48D500E60AD3 /* StackLink.c in Sources */ = {isa = PBXBuildFile; fileRef = A929FA55205A48D500E60AD3 /* StackLink.c */; };
+		A929FA59205A7B0800E60AD3 /* Queue.c in Sources */ = {isa = PBXBuildFile; fileRef = A929FA58205A7B0800E60AD3 /* Queue.c */; };
 		A92B4D5A2058C39100FCC641 /* Global.c in Sources */ = {isa = PBXBuildFile; fileRef = A92B4D592058C39100FCC641 /* Global.c */; };
 /* End PBXBuildFile section */
 
@@ -39,6 +40,8 @@
 		A929FA52205A129700E60AD3 /* String.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = String.c; sourceTree = "<group>"; };
 		A929FA54205A48D500E60AD3 /* StackLink.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StackLink.h; sourceTree = "<group>"; };
 		A929FA55205A48D500E60AD3 /* StackLink.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = StackLink.c; sourceTree = "<group>"; };
+		A929FA57205A7B0800E60AD3 /* Queue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Queue.h; sourceTree = "<group>"; };
+		A929FA58205A7B0800E60AD3 /* Queue.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = Queue.c; sourceTree = "<group>"; };
 		A92B4D582058C39100FCC641 /* Global.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Global.h; sourceTree = "<group>"; };
 		A92B4D592058C39100FCC641 /* Global.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = Global.c; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -91,6 +94,8 @@
 				A926CD2A205524B600CA94E1 /* SingleLinkList.c */,
 				A929FA54205A48D500E60AD3 /* StackLink.h */,
 				A929FA55205A48D500E60AD3 /* StackLink.c */,
+				A929FA57205A7B0800E60AD3 /* Queue.h */,
+				A929FA58205A7B0800E60AD3 /* Queue.c */,
 				A929FA51205A129700E60AD3 /* String.h */,
 				A929FA52205A129700E60AD3 /* String.c */,
 			);
@@ -159,6 +164,7 @@
 				A926CD222055245500CA94E1 /* main.c in Sources */,
 				A92B4D5A2058C39100FCC641 /* Global.c in Sources */,
 				A929FA56205A48D500E60AD3 /* StackLink.c in Sources */,
+				A929FA59205A7B0800E60AD3 /* Queue.c in Sources */,
 				A926CD2B205524B600CA94E1 /* SingleLinkList.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

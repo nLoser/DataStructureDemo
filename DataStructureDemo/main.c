@@ -10,10 +10,12 @@
 #include "SequentialLink.h"
 #include "SingleLinkList.h"
 #include "StackLink.h"
+#include "Queue.h"
 
 int main(int argc, const char * argv[]) {
     //testSequentialLinkOperation();
     //testSingleLinkListOperation();
-    testStackListOperation();
+    //testStackListOperation();
+    testQueueListOperation();
     return 0;
 }
